@@ -1,3 +1,8 @@
+
+<p align="center">
+  <img src="http://re7latkom.com/media/images/pictures/b7da961d0ec3410e85c4c8c67fa72012.png" width="350"/>
+</p>
+
 # WhiskBot
 Is a bot for managing restaurants, which allows to respond for basics tasks, and taking reservations. The bot works on Telegram App.
 
