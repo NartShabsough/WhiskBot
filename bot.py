@@ -185,25 +185,11 @@ def prepareResponse(text, chat, name):
                 handle_reservation(text, chat, "new")
             return
 
-
-
-
-
-
-
         #Unclear request
         if greeting==0 and location==0 and reservation==0 and contact==0 and menu==0:
             reply = "Sorry " + name + ", " + "I'm still new at this job, what did you mean ?"
             send_message(reply,chat)
 
-
-
-
-#    if data["greeting"][0] in text:
-
-#    if re.search("hi", text, re.IGNORECASE) or re.search("hey", text, re.IGNORECASE) or re.search("hello", text, re.IGNORECASE) or re.search("moin", text, re.IGNORECASE) or re.search("hallo", text, re.IGNORECASE):
-#        mes = ("Hey "+clientName+"\n")
-#            send_message(mes,chat)
 
     return 3,2,3
 
