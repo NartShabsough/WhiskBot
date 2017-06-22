@@ -10,8 +10,6 @@ from dbhelper import DBHelper
 
 db = DBHelper()
 
-#TOKEN = "322250907:AAHhYIskBizbpIK0tgziKHw8k9UBDK4AEQE"
-#TOKEN = "395965365:AAGbmgtzHM-l_oGuLD7BIW5QkRZ7e25k29U"
 TOKEN = "425044369:AAHS5yc9dU8ETJL6VlSsvPDfd6orE-uW4Ug"
 URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 
@@ -223,38 +221,11 @@ def handle_updates(updates):
         resLocationlong = db.get_restaurant("long")
         resLocationlat = db.get_restaurant("lat")
         
-        #items = db.get_items(chat)
-        #print(text.lower() in "number".lower())
-        
-#        p=text.split()
-#        print(len(p))
-#        print(data["greeting"])
-
         #Analyse Response
         k = prepareResponse(text, chat, clientName)
 
-        #Check Reservation
-
-
-
-#        print(k[0])
-
-
-#        if text in items:
-#            db.delete_item(text, chat)
-#            items = db.get_items(chat)
-#            message = "\n".join(items)
-#            send_message(message, chat)
-#        else:
-#            db.add_item(text, chat)
-#            items = db.get_items(chat)
-#            message = "\n".join(items)
-#            send_message(message, chat)
-
 
 def handle_reservation(text, chat, type):
-
-    print("HEEETE")
 
     global Command
     if type=="new":
