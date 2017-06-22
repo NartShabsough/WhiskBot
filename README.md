@@ -4,7 +4,7 @@ Is a bot for managing restaurants, which allows to respond for basics tasks, and
 
 ---------------
 
-### Getting Started
+## Getting Started
 
 1)  Download all files in one folder.
 2)  Open terminal, and go to that directory 
@@ -26,4 +26,15 @@ Is a bot for managing restaurants, which allows to respond for basics tasks, and
 
 ---------------
 
-### Documentation 
+## Documentation 
+
+This bot is created from 4 files:
+
+1)  bot.py: The mian file wiht all algorithms and methods.
+
+2)  dbhelper.py: The database handling file.
+
+3)  word.json and repleis.json: JSON files to read from common words.
+
+
+### 1) bot.py
