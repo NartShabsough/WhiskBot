@@ -23,3 +23,7 @@ Is a bot for managing restaurants, which allows to respond for basics tasks, and
 6)  Add the bot @Whisk_Bot.
 
 7)  Try using the bot.
+
+---------------
+
+### Documentation 
