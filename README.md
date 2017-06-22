@@ -38,3 +38,65 @@ This bot is created from 4 files:
 
 
 ### 1) bot.py
+
+```python
+def prepareResponse()
+```
+- This method handles all the messages and analyse the content of it for further computing.
+
+```python
+def handle_updates()
+```
+- This method get called every 0.5s to check for new comming messages.
+
+```python
+def handle_reservation()
+```
+- This method is called once a reservation request is detected.
+
+```python
+def new()
+```
+- This method create a new reservation once requested.
+
+```python
+def cancel()
+```
+- This method cancle a new reservation once requested.
+
+```python
+def showDates()
+```
+- This method display the dates on the keyoard instead of the normal keyboard.
+
+```python
+def handle_command()
+```
+- This method helps in the reservation making.
+
+```python
+def set_Date()
+```
+- This method create a list of dates based on the currunt date for reservation purposes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
