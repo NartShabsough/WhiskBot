@@ -136,8 +136,9 @@ def prepareResponse(text, chat, name):
         if greeting==0 and contact==1:
             c = randint(0, 2)
             con = replies["contact"]
-            reply = con[c] + " " + restaurant_phone
+            reply = con[c]
             send_message(reply,chat)
+            send_Contact(restaurant_phone,restaurant_name,"",chat)
             return
 
         if greeting==1 and contact==1:
@@ -147,8 +148,9 @@ def prepareResponse(text, chat, name):
             word1 = replies["his"]
             word2 = replies["greeting"]
             con = replies["contact"]
-            reply = word1[r] + " " + name + ",\n" + word2[k] + "\n\n" + con[c] + " " + restaurant_phone
+            reply = word1[r] + " " + name + ",\n" + word2[k] + "\n\n" + con[c]
             send_message(reply,chat)
+            send_Contact(restaurant_phone,restaurant_name,"",chat)
             greeting=0
             return
 
@@ -351,12 +353,17 @@ def send_location(latitude,longitude, chat_id, reply_markup=None):
         url += "&reply_markup={}".format(reply_markup)
     get_url(url)
 
+def send_Contact(phone_number,first_name, last_name, chat_id, reply_markup=None):
+    url = URL + "sendContact?phone_number={}&first_name={}&last_name={}&chat_id={}&parse_mode=Markdown".format(phone_number,first_name,last_name, chat_id)
+    if reply_markup:
+        url += "&reply_markup={}".format(reply_markup)
+    get_url(url)
+
 
 
 def main():
     db.setup()
     last_update_id = None
-    
     #Restaurant
     restaurantName = db.get_restaurant("name")
     if restaurantName == "0":
