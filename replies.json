@@ -16,7 +16,7 @@
 			"We are not that far from the Haputbanhof, this is for you so you don’t lose your way!"
 		],
 
-"reservation":["reserve","reservation","book","booking"],
+"reservation":	["reserve","reservation","book","booking"],
 
 "contact" : 	[
 			"You can reach us at",
@@ -25,14 +25,28 @@
 		],
 
 "menu":		[	
-			"menu",
-			"offer",
-			"server"
+			"Here's the menu!",
+			"Pay us a visit, it’a always better!",
+			"Have a look, I am sure you will like something!",
+			"Trust me, its way more better in real!"
 		],
 "his":		[
 			"Hi",
 			"Hey",
 			"Hallo",
 			"Moin Moin!"
-		]	
+		],
+"thank":		[
+			"You’re welcome",
+			"My pleasure",
+			"At your service!",
+			"Any time"
+		],
+"bye":		[
+			"Goodbye!",
+			"Take care!",
+			"Bye Bye!",
+			"Auf Wiedersehen!!",
+			"Tschüss "
+		]
 }

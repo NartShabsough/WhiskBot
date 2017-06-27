@@ -46,6 +46,7 @@ class DBHelper:
         self.conn.execute(phoneidx)
         self.conn.execute(longidx)
         self.conn.execute(latidx)
+        
         self.conn.execute(mnameidx)
         self.conn.execute(priceidx)
         self.conn.execute(sizeidx)

@@ -57,7 +57,7 @@ def prepareResponse(text, chat, name):
 
     #Check greeting
     print("------")
-
+    
     parts = text.split()
     global restaurant_name, restaurant_phone, restaurant_latitude, restaurant_longtitude
     greeting=0
@@ -65,6 +65,8 @@ def prepareResponse(text, chat, name):
     reservation=0
     cancel=0
     contact=0
+    thank=0
+    bye=0
     menu=0
 
     for x in parts:
@@ -94,10 +96,18 @@ def prepareResponse(text, chat, name):
         for y in word:
             if y ==x:
                 menu=1
+                    
+        word = data["thank"]
+        for y in word:
+            if re.search(y, x, re.IGNORECASE):
+                thank=1
 
-    print(greeting,location,reservation,contact,menu)
+        word = data["bye"]
+        for y in word:
+            if re.search(y, x, re.IGNORECASE):
+                bye=1
+
     global menuInProgress,reservationInProgress
-    print(reservationInProgress)
 
     if menuInProgress == 1:
         print("Menu in progress")
@@ -155,11 +165,23 @@ def prepareResponse(text, chat, name):
             return
 
         if greeting==0 and menu==1:
-            send_message("We are still working on showing the menu",chat)
+            c = randint(0, 3)
+            con = replies["menu"]
+            reply = con[c]
+            send_message(reply,chat)
+            send_Image("http://re7latkom.com/media/images/pictures/15f0bbf2d3af4d2791c30fc86a11eede.png",chat);
             return
 
         if greeting==1 and menu==1:
-            send_message("Hi, /nSorry but we are still working on showing the menu",chat)
+            r = randint(0, 3)
+            k = randint(0, 1)
+            l = randint(0, 3)
+            word1 = replies["his"]
+            word2 = replies["greeting"]
+            menu = replies["menu"]
+            reply = word1[r] + " " + name + ",\n" + word2[k] + "\n\n" + menu[l]
+            send_message(reply,chat)
+            send_Image("http://re7latkom.com/media/images/pictures/15f0bbf2d3af4d2791c30fc86a11eede.png",chat);
             greeting=0
             return
 
@@ -186,9 +208,24 @@ def prepareResponse(text, chat, name):
             else:
                 handle_reservation(text, chat, "new")
             return
+        
+        if thank==1:
+            t = randint(0, 3)
+            con = replies["thank"]
+            reply = con[t]
+            send_message(reply,chat)
+            return
+
+        if bye==1:
+            b = randint(0, 4)
+            con = replies["thank"]
+            reply = con[b]
+            send_message(reply,chat)
+            return
+    
 
         #Unclear request
-        if greeting==0 and location==0 and reservation==0 and contact==0 and menu==0:
+        if greeting==0 and location==0 and reservation==0 and contact==0 and menu==0 and thank==0 and bye==0:
             reply = "Sorry " + name + ", " + "I'm still new at this job, what did you mean ?"
             send_message(reply,chat)
 
@@ -197,17 +234,26 @@ def prepareResponse(text, chat, name):
 
 
 def handle_updates(updates):
+    #Get restaurant info
+    resName = db.get_restaurant("name")
+    resNum = db.get_restaurant("phone")
+    resLocationlong = db.get_restaurant("long")
+    resLocationlat = db.get_restaurant("lat")
+    
     for update in updates["result"]:
+        
         #Get chat details
-        text = update["message"]["text"]
         chat = update["message"]["chat"]["id"]
         clientName = update["message"]["chat"]["first_name"]
+
+        try:
+            text = update["message"]["text"]
+        except:
+            reply = "Please, " + clientName +"!!\n" + "I barely understand a text message.."
+            send_message(reply,chat)
+            return
         
-        #Get restaurant info
-        resName = db.get_restaurant("name")
-        resNum = db.get_restaurant("phone")
-        resLocationlong = db.get_restaurant("long")
-        resLocationlat = db.get_restaurant("lat")
+
         
         #Analyse Response
         k = prepareResponse(text, chat, clientName)
@@ -353,6 +399,12 @@ def send_location(latitude,longitude, chat_id, reply_markup=None):
         url += "&reply_markup={}".format(reply_markup)
     get_url(url)
 
+def send_Image(photo, chat_id, reply_markup=None):
+    url = URL + "sendPhoto?photo={}&chat_id={}&parse_mode=Markdown".format(photo, chat_id)
+    if reply_markup:
+        url += "&reply_markup={}".format(reply_markup)
+    get_url(url)
+
 def send_Contact(phone_number,first_name, last_name, chat_id, reply_markup=None):
     url = URL + "sendContact?phone_number={}&first_name={}&last_name={}&chat_id={}&parse_mode=Markdown".format(phone_number,first_name,last_name, chat_id)
     if reply_markup:
@@ -373,16 +425,16 @@ def main():
         db.add_table(3,15,1)
         db.add_table(4,5,0)
         db.add_table(5,10,1)
-        db.add_menu("Water","Small","1.5","drink")
-        db.add_menu("CocaCola","Small","2","drink")
-        db.add_menu("Fanta","Small","2","drink")
-        db.add_menu("7up","Small","2","drink")
-        db.add_menu("Orange Juice","Small","1.5","drink")
-        db.add_menu("Apple Juice","Small","1.5","drink")
-        db.add_menu("Pasta","Small","3.5","food")
-        db.add_menu("Cesar Salad","Small","2.7","food")
-        db.add_menu("Lasange","Small","5","food")
-        db.add_menu("Pizza","Small","5","food")
+#        db.add_menu("Water","Small","1.5","drink")
+#        db.add_menu("CocaCola","Small","2","drink")
+#        db.add_menu("Fanta","Small","2","drink")
+#        db.add_menu("7up","Small","2","drink")
+#        db.add_menu("Orange Juice","Small","1.5","drink")
+#        db.add_menu("Apple Juice","Small","1.5","drink")
+#        db.add_menu("Pasta","Small","3.5","food")
+#        db.add_menu("Cesar Salad","Small","2.7","food")
+#        db.add_menu("Lasange","Small","5","food")
+#        db.add_menu("Pizza","Small","5","food")
 
 
     global restaurant_name
