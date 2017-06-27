@@ -5,5 +5,5 @@
 "contact"    : ["contact","phone","number","reach","call","mobile"],
 "menu"       : ["menu","offer","serve","Menu","Offer","Serve"],
 "thank"      : ["thank","thanks","merci","danke"],
-"bye"        : ["bye","tschuss"]
+"bye"        : ["bye","tschuss", "tschus"]
 }

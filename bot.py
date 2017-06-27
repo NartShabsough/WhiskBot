@@ -212,14 +212,14 @@ def prepareResponse(text, chat, name):
         if thank==1:
             t = randint(0, 3)
             con = replies["thank"]
-            reply = con[t]
+            reply = con[t] + ", " + name
             send_message(reply,chat)
             return
 
         if bye==1:
             b = randint(0, 4)
-            con = replies["thank"]
-            reply = con[b]
+            con = replies["bye"]
+            reply = con[b] + ", " + name
             send_message(reply,chat)
             return
     
